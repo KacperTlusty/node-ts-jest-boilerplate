@@ -4,7 +4,14 @@
     "target": "es6",
     "noImplicitAny": false,
     "sourceMap": true,
-    "outDir": "build"
+    "outDir": "build",
+    "esModuleInterop": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "src/**.d.ts"
+    ],
+    "allowUmdGlobalAccess": true,
+    "preserveSymlinks": true
   },
   "exclude": [
     "node_modules"

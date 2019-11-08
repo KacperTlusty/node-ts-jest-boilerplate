@@ -5,11 +5,14 @@ module.exports = {
     "jest/globals": true
   },
   extends: [
-    'standard'
+    'standard',
+    'eslint:recommended',
+    "plugin:@typescript-eslint/recommended"
   ],
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
+    SharedArrayBuffer: 'readonly',
+    esModuleInterop: true
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -21,5 +24,23 @@ module.exports = {
     'jest'
   ],
   rules: {
-  }
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', {
+      'vars': 'all',
+      'args': 'after-used',
+      'ignoreRestSiblings': false
+    }],
+    '@typescript-eslint/no-use-before-define': ['error', {
+      functions: false
+    }]
+  },
+  overrides: [{
+    files: [
+      'src/**/*.test.ts',
+      'tests/**/*.ts'
+    ],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 0
+    }
+  }]
 }
